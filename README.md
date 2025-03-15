@@ -12,12 +12,6 @@ html,javascript,node.js,mondodb,mongo-express
 
 ### Steps
 
-1. **Create a Docker Network (Optional)**  
-   Creating a custom network helps containers communicate with each other.
-   ```bash
-   docker network create mongo-network
-
-
 ### With Docker without using the docker-compose file
 
 #### To start the application: run below commands
@@ -27,17 +21,18 @@ Step 1: Create docker network
     docker network create mongo-network 
 
 Step 2: start mongodb 
-
+  ```bash
   docker run -d -p 27017:27017 \
   -e MONGO_INITDB_ROOT_USERNAME=admin \
   -e MONGO_INITDB_ROOT_PASSWORD=password \
   --name mongodb \
   --net mongo-network \
   mongo
+ 
   
 
 Step 3: start mongo-express
-    
+   ```bash   
   docker run -d -p 8081:8081 \
   -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
   -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
@@ -45,6 +40,7 @@ Step 3: start mongo-express
   --net mongo-network \
   --name mongo-express \
   mongo-express
+
 
 Step 4: open mongo-express from browser
 
