@@ -82,13 +82,28 @@ Step 5: access the nodejs application from browser
 
     http://localhost:3000
 
+To stop the container 
+
+    docker-compose -f docker-compose.yaml down
+
 #### To build a docker image from the application
 
     docker build -t my-app:1.0 .       
     
 The dot "." at the end of the command denotes location of the Dockerfile.
 
-To stop the container 
+Running the image
+  docker run my-app:1.0
 
-    docker-compose -f docker-compose.yaml down
+CLI of Container
+  docker exec -it 307f8c51e365 /bin/sh
+
+Setting the environment variables now
+
+  ls
+  env
+  
+
+
+
 
