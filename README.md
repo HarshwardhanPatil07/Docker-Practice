@@ -28,6 +28,7 @@ Step 2: start mongodb
   --name mongodb \
   --net mongo-network \
   mongo
+  ```
  
   
 
@@ -40,6 +41,7 @@ Step 3: start mongo-express
   --net mongo-network \
   --name mongo-express \
   mongo-express
+  ```
 
 
 Step 4: open mongo-express from browser
