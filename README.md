@@ -93,16 +93,31 @@ To stop the container
 The dot "." at the end of the command denotes location of the Dockerfile.
 
 Running the image
-  docker run my-app:1.0
+    docker run my-app:1.0
 
 CLI of Container
-  docker exec -it 307f8c51e365 /bin/sh
+    docker exec -it 307f8c51e365 /bin/sh
 
 Setting the environment variables now
 
-  ls
-  env
-  
+    ls
+    env
+
+AWS ECR(Elastic container registry)
+
+1. login to aws with root user
+2. go to ecr and create repository 
+3. Make sure you have image in your device of container
+4. AWS provides the login command use from website itself of ecr repository. Prerequisite is AWS CLI and Credentials configured
+5. Docker Tag command now to recognize which image to push to AWS
+6. you can check the new image copy by docker images
+7. docker push now with aws command
+8. if you do changes in current docker file or code.. Go for building new image
+docker build -t my-app:1.1 .
+repeat the same process to  Docker tag step 5. docker tag my-app:1.1 <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/my-app:1.1
+9. docker login is done only once.
+
+
 
 
 
