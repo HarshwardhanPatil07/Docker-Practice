@@ -92,10 +92,10 @@ To stop the container
     
 The dot "." at the end of the command denotes location of the Dockerfile.
 
-Running the image
+Running the image:
     docker run my-app:1.0
 
-CLI of Container
+CLI of Container:
     docker exec -it 307f8c51e365 /bin/sh
 
 Setting the environment variables now
@@ -103,7 +103,7 @@ Setting the environment variables now
     ls
     env
 
-AWS ECR(Elastic container registry)
+### AWS ECR(Elastic container registry)
 
 1. login to aws with root user
 2. go to ecr and create repository 
@@ -117,6 +117,29 @@ docker build -t my-app:1.1 .
 repeat the same process to  Docker tag step 5. docker tag my-app:1.1 <AWS_ACCOUNT_ID>.dkr.ecr.<AWS_REGION>.amazonaws.com/my-app:1.1
 9. docker login is done only once.
 
+![AWS ECR](app/images/AWS%20ECR.png)
+
+
+### Deploying on the dev server
+![AWS ECR](app/images/Deploying%20on%20dev%20server.png)
+
+1. AWS ECR has image my-app and Docker hub for two MongoDB images
+
+2. Do changes as suggested in below image in docker-compose file
+![Changes](app/images/Changes%20in%20docker-compose%20file.png)
+
+3. Also added in server.js for mongodb
+// use when starting application as docker container
+let mongoUrlDocker = "mongodb://admin:password@mongodb";
+
+4. Replace all the mongoUrlLocal in server.js by mongoUrlDocker and build image again
+such as it is in:  MongoClient.connect(mongoUrlLocal, mongoClientOptions, function (err, client) {
+
+5. create the docker compose file in the development server, we don't have it now, by vim docker-compose.yaml and paste the same content as we have in github repo file and 
+
+6. docker-compose -f docker-compose.yaml up
+
+# Now testers and other developers will be able to access the development and try out the application you just created
 
 
 
